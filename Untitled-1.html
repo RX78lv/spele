@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Title of the document</title>
+</head>
+<body>
+  <h2>Spēle!</h2>
+<div id="myDIV1" style="display:block;">
+    <p>Ir bijuši simts gadi kopš šo katakumbu uzbūves. Daudzi piedzīvojumu meklētāji, tādi paši kā tu, ir ienākuši šajās katakumbās un nav atgriezušies. Vai tavs liktenis būs atšķirīgs?</p>
+    <button id="start" onclick="showDiv2(); hideDiv1()">Veikt pirmo soli katakumbās.</button>
+</div>
+
+<div id="myDIV2" style="display:none;">
+   <p>Tu veic savu pirmo soli katakumbās. Tu aizdedzini lāpu, lai varētu redzēt savu ceļu katakumbās. </p> 
+    <h3>Pirmais līmenis!</h3>
+   <p>Tava pirmā izvēle - vai tu iesi pa kreisi, vai pa labi? No labās puses tu sadzirdi necilvēcisku klaigāšanu, un no kreisās puses tu sajūti pelējuma smaku. </p> 
+       <button onclick="showDivkreisi(); hideDiv2()">Iet pa kreisi.</button>
+     <button onclick="showDivlabi(); hideDiv2()">Iet pa labi.</button>
+</div>
+<div id="divlabi" style="display:none;">
+   <p>Tumsā, tu vari pamanīt cilvēkveidīgu siluetu. Tas ir apmēram 3 metrus garš, un neparasti tievs. Tam ir gari, taisni mati, vai varbūt bārda?</p> 
+     <button onclick="showDiv4(); hideDiv3()">Nākt tuvāk būtnei.</button>
+     <button onclick="showDiv2(); hideDivlabi()">Atgriezties relatīvā drošībā.</button>
+</div>
+<div id="divkreisi" style="display:none;">
+   <p>Tev priekšā ir līķis, uz kura aug pelējums. Blakus līķim, tu pamani karti.</p> 
+   <img src="mapimg.png" alt="Karte.">
+   <br>
+     <button onclick="showDiv4(); hideDiv3()">Turpināt tālāk caur katakumbu.</button>
+</div>
+
+</body>
+<script>
+
+//shows div 2
+function showDiv2() {
+document.getElementById('myDIV2').style.display = "block";
+}
+
+//shows divlabi
+function showDivlabi() {
+document.getElementById('divlabi').style.display = "block";
+}
+
+//shows divkreisi
+function showDivkreisi() {
+document.getElementById('divkreisi').style.display = "block";
+}
+
+//hides the fucking div
+function hideDiv1() {
+document.getElementById('myDIV1').style.display = "none";
+}
+
+//hides the fucking div 2
+function hideDiv2() {
+document.getElementById('myDIV2').style.display = "none";
+}
+
+function hideDivlabi() {
+document.getElementById('divlabi').style.display = "none";
+}
+
+</script>
+
+</html>
