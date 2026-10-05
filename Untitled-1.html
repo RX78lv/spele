@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Title of the document</title>
+<title>Spēle</title>
 <style> 
   body {
   background-color: rgb(185, 199, 204);
@@ -23,38 +23,55 @@ button {
 </head>
 <body>
   <h2>Spēle!</h2>
+  <p><span id="myText"></span> Punkti</p>
 <div id="myDIV1" style="display:block;">
     <p>Ir bijuši simts gadi kopš šo katakumbu uzbūves. Daudzi piedzīvojumu meklētāji, tādi paši kā tu, ir ienākuši šajās katakumbās un nav atgriezušies. Vai tavs liktenis būs atšķirīgs?</p>
-    <button id="start" onclick="showDiv2(); hideDiv1()">Veikt pirmo soli katakumbās.</button>
+    <button id="start" onclick="showDiv2(); hideDiv1(); addpoints()">Veikt pirmo soli katakumbās.</button>
 </div>
 
 <div id="myDIV2" style="display:none;">
    <p>Tu veic savu pirmo soli katakumbās. Tu aizdedzini lāpu, lai varētu redzēt savu ceļu katakumbās. </p> 
     <h3>Pirmais līmenis!</h3>
    <p>Tava pirmā izvēle - vai tu iesi pa kreisi, vai pa labi? No labās puses tu sadzirdi necilvēcisku klaigāšanu, un no kreisās puses tu sajūti pelējuma smaku. </p> 
-       <button onclick="showDivkreisi(); hideDiv2()">Iet pa kreisi.</button>
-     <button onclick="showDivlabi(); hideDiv2()">Iet pa labi.</button>
+       <button onclick="showDivkreisi(); hideDiv2(); addpoints()">Iet pa kreisi.</button>
+     <button onclick="showDivlabi(); hideDiv2(); addpoints()">Iet pa labi.</button>
 </div>
 <div id="divlabi" style="display:none;">
    <p>Tumsā, tu vari pamanīt cilvēkveidīgu siluetu. Tas ir apmēram 3 metrus garš, un neparasti tievs. Tam ir gari, taisni mati, vai varbūt bārda?</p> 
-     <button onclick="showDiv4(); hideDiv3()">Nākt tuvāk būtnei.</button>
-     <button onclick="showDiv2(); hideDivlabi()">Atgriezties relatīvā drošībā.</button>
+     <button onclick="showDiv4(); hidedivlabi(); addpoints()">Nākt tuvāk būtnei.</button>
+     <button onclick="showDiv2(); hideDivlabi(); subtractpoints()">Atgriezties relatīvā drošībā.</button>
 </div>
 <div id="divkreisi" style="display:none;">
    <p>Tev priekšā ir līķis, uz kura aug pelējums. Blakus līķim, tu pamani karti.</p> 
    <img src="mapimg.png" alt="Karte.">
    <br>
-     <button onclick="showDiv4(); hideDiv3()">Turpināt tālāk caur katakumbu.</button>
+     <button onclick="showDiv5(); hideDivkreisi(); addpoints()">Turpināt tālāk caur katakumbu.</button>
 </div>
-
+<div id="div4" style="display:none;">
+   <p>Cilvēkveidīgais tev uzbrūk, un ar vienu kodienu tevi nogalina. Tava dzīve ir beigusies.</p> 
+   <br>
+     <button onclick="showDiv1(); hideDiv4(); resetpoints()">Restartēt</button>
+</div>
+<div id="div5" style="display:none;">
+   <p>Tu ej tālāk. Pelējuma smaka ir spēcīga.</p> 
+   <br>
+     <button onclick="showDiv1(); hideDiv4(); addpoints()">Restartēt</button>
+</div>
 </body>
 <script>
-
+  let counter = 0;
+  //shows div 1
+function showDiv1() {
+document.getElementById('myDIV1').style.display = "block";
+}
 //shows div 2
 function showDiv2() {
 document.getElementById('myDIV2').style.display = "block";
 }
-
+//shows div 4
+function showDiv4() {
+document.getElementById('div4').style.display = "block";
+}
 //shows divlabi
 function showDivlabi() {
 document.getElementById('divlabi').style.display = "block";
@@ -75,10 +92,33 @@ function hideDiv2() {
 document.getElementById('myDIV2').style.display = "none";
 }
 
+function hideDiv4() {
+document.getElementById('div4').style.display = "none";
+}
+
+function hidedivlabi() {
+document.getElementById('divlabi').style.display = "none";
+}
+
 function hideDivlabi() {
 document.getElementById('divlabi').style.display = "none";
 }
 
+function addpoints() {
+counter += 1;
+console.log(counter); // Output: 1
+document.getElementById("myText").innerHTML = counter;
+}
+function subtractpoints() {
+counter -= 1;
+console.log(counter); // Output: 1
+document.getElementById("myText").innerHTML = counter;
+}
+function resetpoints() {
+counter = 0;
+console.log(counter); // Output: 1
+document.getElementById("myText").innerHTML = counter;
+}
 </script>
 
 </html>
