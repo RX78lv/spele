@@ -38,7 +38,7 @@ img {
 <body>
   <h2 style="text-shadow: 2px 2px rgb(121, 141, 148);">Spēle!</h2>
   <div class="laukums">
-      <p><span id="myText"></span> Punkti</p>
+      <p style="font-weight: bold;"><span id="myText"></span> Punkti</p>
 <div id="myDIV1" style="display:block;">
     <p>Ir bijuši simts gadi kopš šo katakumbu uzbūves. Daudzi piedzīvojumu meklētāji, tādi paši kā tu, ir ienākuši šajās katakumbās un nav atgriezušies. Vai tavs liktenis būs atšķirīgs?</p>
    <input id="in01" type="text" placeholder="Tava varoņa vārds">
@@ -71,10 +71,16 @@ img {
      <button onclick="showDiv1(); hideDiv4(); resetpoints()">Restartēt</button>
 </div>
 <div id="div5" style="display:none;">
-   <p>Tu ej tālāk. Pelējuma smaka ir spēcīga.</p> 
+   <p>Tu ej tālāk. Pelējuma smaka ir spēcīga. Uz visām sienām, ir redzami daudzi dažādi pelējuma paveidi un tipi. Tu sajūti vēlmi ieēst nedaudz pelējumu.</p> 
    <br>
-     <button onclick="showDiv1(); hideDiv4(); addpoints()">Restartēt</button>
+     <button onclick="showDiv7(); hideDiv5(); addpoints()">Pretoties vēlmei</button>
+          <button onclick="showDiv6(); hideDiv5(); addpoints()">Ieēst pelējumu</button>
 </div>
+<div id="div6" style="display:none;">
+   <h3 style="color:Tomato; font-weight: bold;">Tu zaudē!</h3>
+   <p>Tu ieēd nedaudz pelējumu. Pēc dažām sekundēm, tu saproti, ka šī bija slikta ideja. Tu zaudē samaņu, un pārsit savu galvu uz katakumbu cietās zemes. Tu esi miris.</p> 
+   <br>
+     <button onclick="showDiv1(); hideDiv6(); resetpoints()">Restartēt</button>
 </div>
 </body>
 <script>
@@ -91,11 +97,20 @@ document.getElementById('myDIV2').style.display = "block";
 function showDiv4() {
 document.getElementById('div4').style.display = "block";
 }
+//shows div 5
+function showDiv5() {
+document.getElementById('div5').style.display = "block";
+}
 //shows divlabi
 function showDivlabi() {
 document.getElementById('divlabi').style.display = "block";
 }
-
+function showDiv6() {
+document.getElementById('div6').style.display = "block";
+}
+function showDiv7() {
+document.getElementById('div7').style.display = "block";
+}
 //shows divkreisi
 function showDivkreisi() {
 document.getElementById('divkreisi').style.display = "block";
@@ -121,6 +136,20 @@ document.getElementById('divlabi').style.display = "none";
 
 function hideDivlabi() {
 document.getElementById('divlabi').style.display = "none";
+}
+
+function hideDiv5() {
+document.getElementById('div5').style.display = "none";
+}
+
+function hideDiv6() {
+document.getElementById('div6').style.display = "none";
+}
+function hideDiv7() {
+document.getElementById('div7').style.display = "none";
+}
+function hideDivkreisi() {
+document.getElementById('divkreisi').style.display = "none";
 }
 
 function addpoints() {
