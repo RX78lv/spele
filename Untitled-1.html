@@ -9,8 +9,8 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 button {
-  background-color: red;
-  border: none;
+  background-color: rgb(56, 63, 97);
+  border: inset;
   color: white;
   padding: 15px 32px;
   text-align: center;
@@ -19,13 +19,30 @@ button {
   font-size: 16px;
   cursor: pointer;
 }
+.laukums {
+  width: 400px;
+  padding: 20px;
+  margin: 20px auto;
+  box-sizing: border-box;
+  border-style: inset;
+}
+img {
+  border: inset;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
 </style>
 </head>
 <body>
-  <h2>Spēle!</h2>
-  <p><span id="myText"></span> Punkti</p>
+  <h2 style="text-shadow: 2px 2px rgb(121, 141, 148);">Spēle!</h2>
+  <div class="laukums">
+      <p><span id="myText"></span> Punkti</p>
 <div id="myDIV1" style="display:block;">
     <p>Ir bijuši simts gadi kopš šo katakumbu uzbūves. Daudzi piedzīvojumu meklētāji, tādi paši kā tu, ir ienākuši šajās katakumbās un nav atgriezušies. Vai tavs liktenis būs atšķirīgs?</p>
+   <input id="in01" type="text" placeholder="Tava varoņa vārds">
+   <p></p>
     <button id="start" onclick="showDiv2(); hideDiv1(); addpoints()">Veikt pirmo soli katakumbās.</button>
 </div>
 
@@ -48,6 +65,7 @@ button {
      <button onclick="showDiv5(); hideDivkreisi(); addpoints()">Turpināt tālāk caur katakumbu.</button>
 </div>
 <div id="div4" style="display:none;">
+   <h3 style="color:Tomato; font-weight: bold;">Tu zaudē!</h3>
    <p>Cilvēkveidīgais tev uzbrūk, un ar vienu kodienu tevi nogalina. Tava dzīve ir beigusies.</p> 
    <br>
      <button onclick="showDiv1(); hideDiv4(); resetpoints()">Restartēt</button>
@@ -56,6 +74,7 @@ button {
    <p>Tu ej tālāk. Pelējuma smaka ir spēcīga.</p> 
    <br>
      <button onclick="showDiv1(); hideDiv4(); addpoints()">Restartēt</button>
+</div>
 </div>
 </body>
 <script>
