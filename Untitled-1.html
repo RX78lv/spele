@@ -37,6 +37,32 @@ img {
 button:hover {
   background-color: orange;
 }
+/* Tooltip container */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black; /* Add dots under the hoverable text */
+  cursor: pointer;
+}
+
+/* Tooltip text */
+.tooltiptext {
+  visibility: hidden; /* Hidden by default */
+  width: 150px;
+  text-size-adjust: 50%;
+  background-color: rgb(40, 45, 71);
+  color: #ffffff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1; /* Ensure tooltip is displayed above content */
+}
+
+/* Show the tooltip text on hover */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
 </style>
 </head>
 <body>
@@ -86,9 +112,26 @@ button:hover {
    <br>
      <button onclick="displaydiv(1);; hidediv(7); resetpoints()">Restartēt</button>
 </div>
+<div id="div10" style="display:none;">
+   <p>Tev sanāk pretoties vēlmei un doties tālāk. Pēc dažiem soļiem, tu pamani šī pelējuma avotu - uz katakumbu grīdas ir līķis, pāraudzis ar dažādām sēnēm un pelējumiem.</p> 
+   <p>Pēc brīža, līķis pieceļas un uzbrūk! </p>
+   <p style="font-weight: bold;">Monstram atliek [<span id="monsterhp"></span>] dzīvības punkti!</p>
+  <div class="tooltip"><button onclick="subtracthealth(1);">Uzbrukt ⚔</button>
+  <span class="tooltiptext">Uzbrukt pretiniekam! Samazina dzīvības punktus par vienu.</span>
+</div>
+  <div class="tooltip"><button onclick="displaydiv(1); hidediv(7); resetpoints()">Aizsargāties 🛡</button>
+  <span class="tooltiptext">Aizsargāties pret uzbrukumiem, ja trāpa tad tu nenomirsi.</span>
+</div>
+  <div class="tooltip"><button onclick="subtractpoints();subtracthealth(2);">Izmantot maģiju ★</button>
+  <span class="tooltiptext">Izmantot maģiju lai uzbruktu, samazina punktus par vienu, samazina dzīvības punktus par diviem.</span>
+</div>
+   <br>
+</div>
 </body>
 <script>
   let counter = 0;
+  let monsterhp = 0;
+ document.getElementById("myText").innerHTML = counter;
 function addpoints() {
 counter += 1;
 console.log(counter); // Output: 1
@@ -98,6 +141,11 @@ function subtractpoints() {
 counter -= 1;
 console.log(counter); // Output: 1
 document.getElementById("myText").innerHTML = counter;
+}
+function subtracthealth(a) {
+monsterhp -= a;
+console.log(counter); // Output: 1
+document.getElementById("monsterhp").innerHTML = counter;
 }
 function resetpoints() {
 counter = 0;
@@ -132,6 +180,12 @@ function displaydiv(a) {
       else if  (a === 7) {
     console.log("number 6 displayed");
     document.getElementById('div6').style.display = "block";
+  }
+        else if  (a === 10) {
+    console.log("number 10 displayed");
+    document.getElementById('div10').style.display = "block";
+    monsterhp += 5;
+    document.getElementById("monsterhp").innerHTML = monsterhp;
   }
   else {
     console.log("nothing");
