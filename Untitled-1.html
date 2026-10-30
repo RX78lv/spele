@@ -67,6 +67,10 @@ button:hover {
 </head>
 <body>
   <h2 style="text-shadow: 2px 2px rgb(121, 141, 148);">Spēle!</h2>  
+  <audio controls>
+  <source src="skaņas\mouse-click-sound.mp3" type="audio/mp3">
+Your browser does not support the audio element.
+</audio>
   <div class="laukums">
       <p style="font-weight: bold;"><span id="myText"></span> Punkti</p>
 <div id="myDIV1" style="display:block;">
@@ -90,7 +94,7 @@ button:hover {
 </div>
 <div id="divkreisi" style="display:none;">
    <p>Tev priekšā ir līķis, uz kura aug pelējums. Blakus līķim, tu pamani karti.</p> 
-   <img src="mapimg.png" alt="Karte.">
+   <img src="atteli\mapimg.png" alt="Karte.">
    <br>
      <button onclick="displaydiv(6); hidediv(4); addpoints()">Turpināt tālāk caur katakumbu.</button>
 </div>
