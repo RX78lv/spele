@@ -67,8 +67,8 @@ button:hover {
 </head>
 <body>
   <h2 style="text-shadow: 2px 2px rgb(121, 141, 148);">Spēle!</h2>  
-  <audio controls>
-  <source src="skaņas\mouse-click-sound.mp3" type="audio/mp3">
+  <audio controls id="myAudio" hidden>
+  <source src="skaņas\matthewvakaliuk73627-mouse-click-290204.mp3" type="audio/mp3">
 Your browser does not support the audio element.
 </audio>
   <div class="laukums">
@@ -77,65 +77,70 @@ Your browser does not support the audio element.
     <p>Ir bijuši simts gadi kopš šo katakumbu uzbūves. Daudzi piedzīvojumu meklētāji, tādi paši kā tu, ir ienākuši šajās katakumbās un nav atgriezušies. Vai tavs liktenis būs atšķirīgs?</p>
    <input id="in01" type="text" placeholder="Tava varoņa vārds">
    <p></p>
-    <button id="start" onclick="displaydiv(2); hidediv(1); addpoints()">Veikt pirmo soli katakumbās.</button>
+    <button id="start" onclick="displaydiv(2); hidediv(1); addpoints(); playAudio();">Veikt pirmo soli katakumbās.</button>
 </div>
 
 <div id="myDIV2" style="display:none;">
    <p>Tu veic savu pirmo soli katakumbās. Tu aizdedzini lāpu, lai varētu redzēt savu ceļu katakumbās. </p> 
     <h3>Pirmais līmenis!</h3>
    <p>Tava pirmā izvēle - vai tu iesi pa kreisi, vai pa labi? No labās puses tu sadzirdi necilvēcisku klaigāšanu, un no kreisās puses tu sajūti pelējuma smaku. </p> 
-       <button onclick="displaydiv(4); hidediv(2); addpoints()">Iet pa kreisi.</button>
-     <button onclick="displaydiv(3); hidediv(2); addpoints()">Iet pa labi.</button>
+       <button onclick="displaydiv(4); hidediv(2); addpoints(); playAudio();">Iet pa kreisi.</button>
+     <button onclick="displaydiv(3); hidediv(2); addpoints(); playAudio();">Iet pa labi.</button>
 </div>
 <div id="divlabi" style="display:none;">
    <p>Tumsā, tu vari pamanīt cilvēkveidīgu siluetu. Tas ir apmēram 3 metrus garš, un neparasti tievs. Tam ir gari, taisni mati, vai varbūt bārda?</p> 
-     <button onclick="displaydiv(5); hidediv(3); addpoints()">Nākt tuvāk būtnei.</button>
-     <button onclick="displaydiv(2); hidediv(3); subtractpoints()">Atgriezties relatīvā drošībā.</button>
+     <button onclick="displaydiv(5); hidediv(3); addpoints(); playAudio();">Nākt tuvāk būtnei.</button>
+     <button onclick="displaydiv(2); hidediv(3); subtractpoints(); playAudio();">Atgriezties relatīvā drošībā.</button>
 </div>
 <div id="divkreisi" style="display:none;">
    <p>Tev priekšā ir līķis, uz kura aug pelējums. Blakus līķim, tu pamani karti.</p> 
    <img src="atteli\mapimg.png" alt="Karte.">
    <br>
-     <button onclick="displaydiv(6); hidediv(4); addpoints()">Turpināt tālāk caur katakumbu.</button>
+     <button onclick="displaydiv(6); hidediv(4); addpoints(); playAudio();">Turpināt tālāk caur katakumbu.</button>
 </div>
 <div id="div4" style="display:none;">
    <h3 style="color:Tomato; font-weight: bold;">Tu zaudē!</h3>
    <p>Cilvēkveidīgais tev uzbrūk, un ar vienu kodienu tevi nogalina. Tava dzīve ir beigusies.</p> 
    <br>
-     <button onclick="displaydiv(1);; hidediv(5); resetpoints()">Restartēt</button>
+     <button onclick="displaydiv(1);; hidediv(5); resetpoints(); playAudio();">Restartēt</button>
 </div>
 <div id="div5" style="display:none;">
    <p>Tu ej tālāk. Pelējuma smaka ir spēcīga. Uz visām sienām, ir redzami daudzi dažādi pelējuma paveidi un tipi. Tu sajūti vēlmi ieēst nedaudz pelējumu.</p> 
    <br>
-     <button onclick="displaydiv(10); hidediv(6); addpoints()">Pretoties vēlmei</button>
-          <button onclick="displaydiv(7); hidediv(6); addpoints()">Ieēst pelējumu</button>
+     <button onclick="displaydiv(10); hidediv(6); addpoints(); playAudio();">Pretoties vēlmei</button>
+          <button onclick="displaydiv(7); hidediv(6); addpoints(); playAudio();">Ieēst pelējumu</button>
 </div>
 <div id="div6" style="display:none;">
    <h3 style="color:Tomato; font-weight: bold;">Tu zaudē!</h3>
    <p>Tu ieēd nedaudz pelējumu. Pēc dažām sekundēm, tu saproti, ka šī bija slikta ideja. Tu zaudē samaņu, un pārsit savu galvu uz katakumbu cietās zemes. Tu esi miris.</p> 
    <br>
-     <button onclick="displaydiv(1);; hidediv(7); resetpoints()">Restartēt</button>
+     <button onclick="displaydiv(1);; hidediv(7); resetpoints(); playAudio();">Restartēt</button>
 </div>
 <div id="div10" style="display:none;">
    <p>Tev sanāk pretoties vēlmei un doties tālāk. Pēc dažiem soļiem, tu pamani šī pelējuma avotu - uz katakumbu grīdas ir līķis, pāraudzis ar dažādām sēnēm un pelējumiem.</p> 
    <p>Pēc brīža, līķis pieceļas un uzbrūk! </p>
    <p style="font-weight: bold;">Monstram atliek [<span id="monsterhp"></span>] dzīvības punkti!</p>
-  <div class="tooltip"><button onclick="subtracthealth(1);">Uzbrukt ⚔</button>
+  <div class="tooltip"><button onclick="subtracthealth(1); playAudio();">Uzbrukt ⚔</button>
   <span class="tooltiptext">Uzbrukt pretiniekam! Samazina dzīvības punktus par vienu.</span>
 </div>
-  <div class="tooltip"><button onclick="displaydiv(1); hidediv(7); resetpoints()">Aizsargāties 🛡</button>
+  <div class="tooltip"><button onclick="displaydiv(1); hidediv(10); resetpoints(); playAudio();">Aizsargāties 🛡</button>
   <span class="tooltiptext">Aizsargāties pret uzbrukumiem, ja trāpa tad tu nenomirsi.</span>
 </div>
-  <div class="tooltip"><button onclick="subtractpoints();subtracthealth(2);">Izmantot maģiju ★</button>
+  <div class="tooltip"><button onclick="subtractpoints();subtracthealth(2); playAudio();">Izmantot maģiju ★</button>
   <span class="tooltiptext">Izmantot maģiju lai uzbruktu, samazina punktus par vienu, samazina dzīvības punktus par diviem.</span>
 </div>
+  <p>Šī spēles daļa šobrīd nestrādā!</p>
    <br>
 </div>
 </body>
 <script>
   let counter = 0;
   let monsterhp = 0;
+  var x = document.getElementById("myAudio"); 
  document.getElementById("myText").innerHTML = counter;
+function playAudio() { 
+  x.play(); 
+} 
 function addpoints() {
 counter += 1;
 console.log(counter); // Output: 1
@@ -223,6 +228,10 @@ function hidediv(a) {
       else if  (a === 7) {
     console.log("number 6 hidden");
     document.getElementById('div6').style.display = "none";
+  }
+        else if  (a === 10) {
+    console.log("ten hidden");
+    document.getElementById('div10').style.display = "none";
   }
   else {
     console.log("nothing");
