@@ -2,11 +2,50 @@
 <html>
 <head>
 <title>Spēle</title>
+<style> 
+  body {
+  background-color: rgb(44, 43, 42);
+  text-align: center;
+  font-family: "Lucida Console", "Courier New", monospace;
+}
+button {
+  background-color: rgb(128, 105, 80);
+  color: white;
+  border-color:rgb(128, 105, 80);
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  transition: width 0.3s, height 0.3s, background-color 0.3s;
+  border-radius: 5px;
+}
+.laukums {
+ background-color: rgb(88, 80, 71);
+  width: 400px;
+  padding: 20px;
+  margin: 20px auto;
+  box-sizing: border-box;
+  border-color:rgb(88, 80, 71);
+  border-style: inset;
+  border-radius: 5px;
+}
+</style>
 </head>
 <body>
+    <div class="laukums">
 <p><button type="button">Uzbrukt par <span style="color:rgb(255, 0, 0);font-weight:bold" id="attack">0</span> ievainojuma punktiem</button></p>
+<p><button type="button"; onclick="setDamage(5)"> Iegūt ieroci</button>
+    </div>
 </body>
 <script>
-let damage = 0
+let damage = 1
+ document.getElementById("attack").innerHTML = damage;
+function setDamage(a) {
+    damage = a;
+    console.log(damage);
+     document.getElementById("attack").innerHTML = damage;
+}
 </script>
 </html>
