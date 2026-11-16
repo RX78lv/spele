@@ -6,7 +6,7 @@
   body {
   background-color: rgb(44, 43, 42);
   text-align: center;
-  font-family: "Lucida Console", "Courier New", monospace;
+  font-family: "Roboto Slab", "Lucida Console", "Courier New", monospace;
 }
 button {
   background-color: rgb(128, 105, 80);
@@ -35,17 +35,52 @@ button {
 </head>
 <body>
     <div class="laukums">
-<p><button type="button">Uzbrukt par <span style="color:rgb(255, 0, 0);font-weight:bold" id="attack">0</span> ievainojuma punktiem</button></p>
-<p><button type="button"; onclick="setDamage(5)"> Iegūt ieroci</button>
+     <p>Pretiniekam atliek [<span style="color:rgb(255, 0, 0);font-weight:bold" id="enemyhp">0</span>] Dzīvības punkti</p>
+      <p>Tavam varonim atliek [<span style="color:rgb(0, 255, 0);font-weight:bold" id="playerhp">0</span>] Dzīvības punkti</p>
+        <p>Šobrīd ir [<span style="color:rgb(196, 196, 196);font-weight:bold" id="turn">0</span>] gājiens</p>
+      <p style="font-size: 80%;">Pretinieks uzbrūk katru otro gājienu.</p>
+<p><button type="button"; onclick="dealDamage(1);incrementTurn(1)">Uzbrukt par <span style="color:rgb(255, 0, 0);font-weight:bold" id="attack">0</span> ievainojuma punktiem</button></p>
+<p><button type="button"; onclick="reduceDamage(1);incrementTurn(1)">Aizsargāties par <span style="color:rgb(0, 162, 255);font-weight:bold" id="protection">0</span> aizsardzības punktiem</button></p>
+<div id="pickupweapon" style="display:none;">
+<p><button type="button"; onclick="setDamage(5);incrementTurn(1)"> Iegūt ieroci</button>
+  </div>
     </div>
 </body>
 <script>
 let damage = 1
  document.getElementById("attack").innerHTML = damage;
+ let enemyhp = 10
+ document.getElementById("enemyhp").innerHTML = enemyhp;
+  let playerhp = 10
+ document.getElementById("playerhp").innerHTML = playerhp;
+   let damageprotection = 5
+ document.getElementById("protection").innerHTML = damageprotection;
+  let incomingreduction = 0
+  let turn = 0
+  document.getElementById("turn").innerHTML = turn;
 function setDamage(a) {
     damage = a;
     console.log(damage);
      document.getElementById("attack").innerHTML = damage;
+}
+function dealDamage(a) {
+    enemyhp -= damage *= a;
+    console.log(enemyhp);
+     document.getElementById("enemyhp").innerHTML = enemyhp;
+}
+function reduceDamage(a) {
+    damageprotection = incomingreduction *= a;
+    console.log(incomingreduction);
+}
+function incrementTurn(a) {
+    turn += a;
+    console.log(turn);
+      document.getElementById("turn").innerHTML = turn;
+      if (turn % 2 === 0) {
+console.log(`${turn} is an Even number`);
+} else {
+console.log(`${turn} is an Odd number`);
+}
 }
 </script>
 </html>
