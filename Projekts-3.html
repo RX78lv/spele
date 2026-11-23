@@ -35,16 +35,24 @@ button {
 </head>
 <body>
     <div class="laukums">
+      <div id="game" style="display:block;">
      <p>Pretiniekam atliek [<span style="color:rgb(255, 0, 0);font-weight:bold" id="enemyhp">0</span>] Dzīvības punkti</p>
       <p>Tavam varonim atliek [<span style="color:rgb(0, 255, 0);font-weight:bold" id="playerhp">0</span>] Dzīvības punkti</p>
         <p>Šobrīd ir [<span style="color:rgb(196, 196, 196);font-weight:bold" id="turn">0</span>] gājiens</p>
       <p style="font-size: 80%;">Pretinieks uzbrūk katru otro gājienu.</p>
-<p><button type="button"; onclick="dealDamage(1);incrementTurn(1)">Uzbrukt par <span style="color:rgb(255, 0, 0);font-weight:bold" id="attack">0</span> ievainojuma punktiem</button></p>
-<p><button type="button"; onclick="reduceDamage(1);incrementTurn(1)">Aizsargāties par <span style="color:rgb(0, 162, 255);font-weight:bold" id="protection">0</span> aizsardzības punktiem</button></p>
-<div id="pickupweapon" style="display:none;">
-<p><button type="button"; onclick="setDamage(5);incrementTurn(1)"> Iegūt ieroci</button>
+<p><button type="button"; onclick="dealDamage(1);incrementTurn(1);checkifwin()">Uzbrukt par <span style="color:rgb(255, 0, 0);font-weight:bold" id="attack">0</span> ievainojuma punktiem</button></p>
+<p><button type="button"; onclick="reduceDamage(1);incrementTurn(1);setenemydamage();checkifwin()">Aizsargāties par <span style="color:rgb(0, 162, 255);font-weight:bold" id="protection">0</span> aizsardzības punktiem</button></p>
+<div id="pickupweapon" style="display:block;">
+<p><button type="button"; onclick="setDamage(5);incrementTurn(1);checkifwin();hideweapon()"> Iegūt ieroci</button>
   </div>
-    </div>
+  </div>
+      <div id="win" style="display:none;">
+<p style="color:rgb(4, 121, 218);font-weight:bold">Tu esi uzveicis savu pretinieku!</p>
+      </div>
+            <div id="dead" style="display:none;">
+<p style="color:rgb(218, 4, 4);font-weight:bold">Tu esi miris...</p>
+      </div>
+          </div>
 </body>
 <script>
 let damage = 1
@@ -58,6 +66,7 @@ let damage = 1
   let incomingreduction = 0
   let turn = 0
   document.getElementById("turn").innerHTML = turn;
+  let enemydamage = 5
 function setDamage(a) {
     damage = a;
     console.log(damage);
@@ -69,8 +78,12 @@ function dealDamage(a) {
      document.getElementById("enemyhp").innerHTML = enemyhp;
 }
 function reduceDamage(a) {
-    damageprotection = incomingreduction *= a;
+    incomingreduction = 5;
     console.log(incomingreduction);
+}
+function setenemydamage() {
+    enemydamage -= incomingreduction;
+    console.log(enemydamage);
 }
 function incrementTurn(a) {
     turn += a;
@@ -78,9 +91,32 @@ function incrementTurn(a) {
       document.getElementById("turn").innerHTML = turn;
       if (turn % 2 === 0) {
 console.log(`${turn} is an Even number`);
+    playerhp = playerhp -= enemydamage;
+     document.getElementById("playerhp").innerHTML = playerhp;
+     incomingreduction = 0;
 } else {
 console.log(`${turn} is an Odd number`);
 }
+}
+function checkifwin(a) {
+  if (enemyhp < 1) {
+    console.log("number 1 displayed");
+    document.getElementById('game').style.display = "none";
+   document.getElementById('win').style.display = "block";
+  }
+    else if (playerhp < 1) {
+    console.log("playerdead");
+    document.getElementById('game').style.display = "none";
+   document.getElementById('dead').style.display = "block";
+  }
+    else {
+    console.log("number 1 displayed");
+    document.getElementById('game').style.display = "block";
+        document.getElementById('win').style.display = "none";
+  }
+}
+function hideweapon() {
+ document.getElementById('pickupweapon').style.display = "none";
 }
 </script>
 </html>
